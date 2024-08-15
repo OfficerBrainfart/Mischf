@@ -102,17 +102,19 @@ local frame3, scrollFrame3 = createFrame(0, "Visual", 18961111786)
 local frame4, scrollFrame4 = createFrame(225, "Utility", 18961113518)
 
 -- Example of adding buttons
-createButton(scrollFrame1, "Combat Button 1", "Description for button 1")
-createButton(scrollFrame1, "Combat Button 2", "Description for button 2")
+createButton(scrollFrame1, "Killaura", "Kills people :D")
+createButton(scrollFrame1, "Antihit", "Teleports you up when you are vulnerable")
 
-createButton(scrollFrame2, "Movement Button 1", "Description for button 1")
-createButton(scrollFrame2, "Movement Button 2", "Description for button 2")
+createButton(scrollFrame2, "Airhop", "Jump in mid air")
+createButton(scrollFrame2, "Antivoid", "Yeets you out of the void")
+createButton(scrollFrame2, "Fly", "i bElEiVE I cAn FlY")
 
-createButton(scrollFrame3, "Visual Button 1", "Description for button 1")
-createButton(scrollFrame3, "Visual Button 2", "Description for button 2")
+createButton(scrollFrame3, "Tracers", "Points out players")
+createButton(scrollFrame3, "Arrows", "idk")
 
-createButton(scrollFrame4, "Utility Button 1", "Description for button 1")
-createButton(scrollFrame4, "Utility Button 2", "Description for button 2")
+createButton(scrollFrame4, "Staff panic", "Disables all modules if staff join")
+createButton(scrollFrame4, "Nuker", "Obliterates beds")
+
 
 -- Create the toggle button
 local button = Instance.new("TextButton")
