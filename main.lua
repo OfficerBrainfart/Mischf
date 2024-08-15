@@ -4,6 +4,7 @@ screenGui.Name = "MyGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Function to create a frame with a title, an icon, and a scroll view
+-- Function to create a frame with a title, an icon, and a scroll view
 local function createFrame(positionXOffset, titleText, iconAssetId)
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0, 200, 0, 600)  -- Size of each frame
@@ -42,7 +43,7 @@ local function createFrame(positionXOffset, titleText, iconAssetId)
     scrollingFrame.Size = UDim2.new(1, 0, 1, -50)  -- Full size minus title space
     scrollingFrame.Position = UDim2.new(0, 0, 0, 50)  -- Position below the title
     scrollingFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)  -- Dark background for scroll view
-    scrollingFrame.ScrollBarThickness = 10
+    scrollingFrame.ScrollBarThickness = 0  -- Hide the scrollbars
     scrollingFrame.Parent = frame
 
     -- Add corner radius to the ScrollingFrame
@@ -59,7 +60,6 @@ local function createFrame(positionXOffset, titleText, iconAssetId)
 
     return frame, scrollingFrame
 end
-
 -- Function to create a toggleable button with title and description
 local function createButton(scrollFrame, buttonTitle, buttonDescription)
     local button = Instance.new("TextButton")
