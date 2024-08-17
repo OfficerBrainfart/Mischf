@@ -257,7 +257,12 @@ local function updateAirJumpIndicator()
             if character then
                 local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
                 if humanoidRootPart then
-                    airJumpIndicator.Position = Vector3.new(humanoidRootPart.Position.X, getLowestSolidY(), humanoidRootPart.Position.Z)
+                    -- Set the X and Z position to match the character, and Y to the lowest solid Y
+                    airJumpIndicator.Position = Vector3.new(
+                        humanoidRootPart.Position.X,
+                        getLowestSolidY(),
+                        humanoidRootPart.Position.Z
+                    )
                     airJumpIndicator.Visible = true
                 end
             end
