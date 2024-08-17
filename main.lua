@@ -3,7 +3,16 @@ local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "MyGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Function to create a frame with a title, an icon, and a scroll view
+local Killaura = false
+local Antihit = false
+local Airhop = false
+local Antivoid = false
+local Fly = false
+local Tracers = false
+local Arrows = false
+local StaffPanic = false
+local Nuker = false
+
 -- Function to create a frame with a title, an icon, and a scroll view
 local function createFrame(positionXOffset, titleText, iconAssetId)
     local frame = Instance.new("Frame")
@@ -87,14 +96,34 @@ local function createButton(scrollFrame, buttonTitle, buttonDescription)
     buttonCorner.CornerRadius = UDim.new(0, 5)
     buttonCorner.Parent = button
 
-    -- Button toggle logic
+    -- Button toggle logic with variable update
     local isActive = false
     button.MouseButton1Click:Connect(function()
         isActive = not isActive
         button.BackgroundColor3 = isActive and Color3.fromRGB(255, 0, 255) or Color3.fromRGB(50, 50, 50)  -- Magenta if active, otherwise dark grey
+
+        -- Toggle the corresponding variable
+        if buttonTitle == "Killaura" then
+            Killaura = not Killaura
+        elseif buttonTitle == "Antihit" then
+            Antihit = not Antihit
+        elseif buttonTitle == "Airhop" then
+            Airhop = not Airhop
+        elseif buttonTitle == "Antivoid" then
+            Antivoid = not Antivoid
+        elseif buttonTitle == "Fly" then
+            Fly = not Fly
+        elseif buttonTitle == "Tracers" then
+            Tracers = not Tracers
+        elseif buttonTitle == "Arrows" then
+            Arrows = not Arrows
+        elseif buttonTitle == "Staff panic" then
+            StaffPanic = not StaffPanic
+        elseif buttonTitle == "Nuker" then
+            Nuker = not Nuker
+        end
     end)
 end
-
 -- Create 4 frames with scrolling views
 local frame1, scrollFrame1 = createFrame(-450, "Combat", 18961107394)
 local frame2, scrollFrame2 = createFrame(-225, "Movement", 18961109628)
