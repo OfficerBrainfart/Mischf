@@ -189,3 +189,52 @@ button.MouseButton1Click:Connect(function()
         blurEffect.Size = 0  -- Remove blur when GUIs are hidden
     end
 end)
+
+
+
+
+-- MODULES
+-- Anti-Void Logic
+local function getLowestSolidY()
+    local character = game.Players.LocalPlayer.Character
+    if not character then return 0 end
+
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if not humanoidRootPart then return 0 end
+
+    local rayOrigin = humanoidRootPart.Position
+    local rayDirection = Vector3.new(0, -500, 0)  -- Cast a long ray downward
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterDescendantsInstances = {character}  -- Exclude the player's own character from the results
+    raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
+
+    local raycastResult = workspace:Raycast(rayOrigin, rayDirection, raycastParams)
+    if raycastResult then
+        return raycastResult.Position.Y
+    end
+
+    return 0
+end
+
+local function enableAntiVoid()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if Antivoid then  -- Check if the Antivoid variable is enabled
+            local character = game.Players.LocalPlayer.Character
+            if not character then return end
+
+            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+            if not humanoidRootPart then return end
+
+            local position = humanoidRootPart.Position
+            local velocity = humanoidRootPart.Velocity
+            local lowestSolidY = getLowestSolidY()  -- Get the lowest solid object's Y position
+
+            if position.Y < lowestSolidY and velocity.Y < 0 then
+                humanoidRootPart.Velocity = Vector3.new(velocity.X, -velocity.Y, velocity.Z)  -- Invert Y velocity
+            end
+        end
+    end)
+end
+
+-- Call this function at the end of your script
+enableAntiVoid()
