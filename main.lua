@@ -194,7 +194,7 @@ end)
 
 
 -- MODULES
--- Anti-Void Logic
+-- Anti-Void module
 local function getLowestSolidY()
     local character = game.Players.LocalPlayer.Character
     if not character then return 0 end
@@ -238,3 +238,34 @@ end
 
 -- Call this function at the end of your script
 enableAntiVoid()
+
+local airJumpIndicator = Instance.new("Part")
+airJumpIndicator.Size = Vector3.new(50, 1, 50) -- Adjust the size of the floor
+airJumpIndicator.Anchored = true
+airJumpIndicator.CanCollide = false
+airJumpIndicator.Transparency = 0.5
+airJumpIndicator.Color = Color3.fromRGB(128, 0, 128) -- Purple color
+airJumpIndicator.Material = Enum.Material.Neon
+airJumpIndicator.Parent = workspace
+airJumpIndicator.Visible = false -- Start hidden
+
+-- Function to update the indicator’s position
+local function updateAirJumpIndicator()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if Antivoid then
+            local character = game.Players.LocalPlayer.Character
+            if character then
+                local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+                if humanoidRootPart then
+                    airJumpIndicator.Position = Vector3.new(humanoidRootPart.Position.X, getLowestSolidY(), humanoidRootPart.Position.Z)
+                    airJumpIndicator.Visible = true
+                end
+            end
+        else
+            airJumpIndicator.Visible = false -- Hide the indicator when Antivoid is disabled
+        end
+    end)
+end
+
+-- Call this function at the end of your script
+updateAirJumpIndicator()
