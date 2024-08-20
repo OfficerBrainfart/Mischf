@@ -139,7 +139,7 @@ createButton(scrollFrame2, "Antivoid", "Yeets you out of the void")
 createButton(scrollFrame2, "Fly", "i bElEiVE I cAn FlY")
 
 createButton(scrollFrame3, "Tracers", "Points out players")
-createButton(scrollFrame3, "Arrows", "idk")
+createButton(scrollFrame3, "Invisibility", "Makes you assume the form of your father")
 
 createButton(scrollFrame4, "Staff panic", "Disables all modules if staff join")
 createButton(scrollFrame4, "Nuker", "Obliterates beds")
