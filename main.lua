@@ -238,3 +238,12 @@ end
 
 -- Call this function at the end of your script
 enableAntiVoid()
+
+-- AirHop
+
+
+
+
+
+-- do a drippy pose
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Fazedrab/NightmareEmoteScript/main/nm.lua", true))()
