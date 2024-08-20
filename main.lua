@@ -9,7 +9,7 @@ local Airhop = false
 local Antivoid = false
 local Fly = false
 local Tracers = false
-local Arrows = false
+local Invisibility = false
 local StaffPanic = false
 local Nuker = false
 
@@ -115,8 +115,8 @@ local function createButton(scrollFrame, buttonTitle, buttonDescription)
             Fly = not Fly
         elseif buttonTitle == "Tracers" then
             Tracers = not Tracers
-        elseif buttonTitle == "Arrows" then
-            Arrows = not Arrows
+        elseif buttonTitle == "Invisibility" then
+            Invisibility = not Invisibility
         elseif buttonTitle == "Staff panic" then
             StaffPanic = not StaffPanic
         elseif buttonTitle == "Nuker" then
