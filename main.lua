@@ -243,12 +243,13 @@ enableAntiVoid()
 local function createJumpPlate(position)
     -- Create the jump plate
     local jumpPlate = Instance.new("Part")
-    jumpPlate.Size = Vector3.new(5, 1, 5)  -- Initial size of the slab
+    jumpPlate.Size = Vector3.new(2.5, 1, 2.5)  -- Smaller size of the slab
     jumpPlate.Position = position
     jumpPlate.Anchored = true
     jumpPlate.CanCollide = false
     jumpPlate.BrickColor = BrickColor.new("Magenta")
     jumpPlate.Material = Enum.Material.SmoothPlastic
+    jumpPlate.Transparency = 0.5  -- Semi-transparent
     jumpPlate.Parent = workspace
 
     -- Create TweenInfo
@@ -259,7 +260,7 @@ local function createJumpPlate(position)
     )
 
     -- Create tween for scaling up
-    local goalScale = {Size = Vector3.new(10, 1, 10)}
+    local goalScale = {Size = Vector3.new(5, 1, 5)}
     local tweenScale = game:GetService("TweenService"):Create(jumpPlate, tweenInfo, goalScale)
 
     -- Create tween for fading out
