@@ -290,7 +290,7 @@ local function enableAirhop()
 
                 -- Create the jump plate slightly below the player's position
                 local position = character.PrimaryPart.Position
-                createJumpPlate(position)
+                
             end
         end
     end)
