@@ -240,7 +240,63 @@ end
 enableAntiVoid()
 
 -- AirHop
+local function createJumpPlate(position)
+    -- Create the jump plate
+    local jumpPlate = Instance.new("Part")
+    jumpPlate.Size = Vector3.new(5, 1, 5)  -- Initial size of the slab
+    jumpPlate.Position = position
+    jumpPlate.Anchored = true
+    jumpPlate.CanCollide = false
+    jumpPlate.BrickColor = BrickColor.new("Magenta")
+    jumpPlate.Material = Enum.Material.SmoothPlastic
+    jumpPlate.Parent = workspace
 
+    -- Create TweenInfo
+    local tweenInfo = TweenInfo.new(
+        1,  -- Duration
+        Enum.EasingStyle.Quad,  -- Easing style
+        Enum.EasingDirection.Out  -- Easing direction
+    )
+
+    -- Create tween for scaling up
+    local goalScale = {Size = Vector3.new(10, 1, 10)}
+    local tweenScale = game:GetService("TweenService"):Create(jumpPlate, tweenInfo, goalScale)
+
+    -- Create tween for fading out
+    local goalTransparency = {Transparency = 1}
+    local tweenTransparency = game:GetService("TweenService"):Create(jumpPlate, tweenInfo, goalTransparency)
+
+    -- Play the tweens
+    tweenScale:Play()
+    tweenTransparency:Play()
+
+    -- Clean up the part after tweening
+    tweenTransparency.Completed:Connect(function()
+        jumpPlate:Destroy()
+    end)
+end
+
+local function enableAirhop()
+    game:GetService("UserInputService").JumpRequest:Connect(function()
+        if Airhop then  -- Check if the Airhop variable is enabled
+            local character = game.Players.LocalPlayer.Character
+            if not character then return end
+
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+                humanoid:Move(Vector3.new(0, 10, 0))  -- Apply an upward force to simulate a jump
+
+                -- Create the jump plate at the player's position
+                local position = character.PrimaryPart.Position
+                createJumpPlate(position)
+            end
+        end
+    end)
+end
+
+-- Call this function at the end of your script
+enableAirhop()
 
 
 
