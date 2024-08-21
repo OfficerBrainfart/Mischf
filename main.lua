@@ -239,14 +239,14 @@ end
 -- Call this function at the end of your script
 enableAntiVoid()
 
--- AirHop
+-- AirHop-- AirHop module with visual effect
 local function createJumpPlate(position)
     -- Create the jump plate
     local jumpPlate = Instance.new("Part")
-    jumpPlate.Size = Vector3.new(2.5, 1, 2.5)  -- Smaller size of the slab
-    jumpPlate.Position = position
+    jumpPlate.Size = Vector3.new(2.5, 0.2, 2.5)  -- Smaller and thinner size of the slab
+    jumpPlate.Position = position - Vector3.new(0, 1, 0)  -- Position it below the player
     jumpPlate.Anchored = true
-    jumpPlate.CanCollide = false
+    jumpPlate.CanCollide = false  -- Ensure it is not solid
     jumpPlate.BrickColor = BrickColor.new("Magenta")
     jumpPlate.Material = Enum.Material.SmoothPlastic
     jumpPlate.Transparency = 0.5  -- Semi-transparent
@@ -260,7 +260,7 @@ local function createJumpPlate(position)
     )
 
     -- Create tween for scaling up
-    local goalScale = {Size = Vector3.new(5, 1, 5)}
+    local goalScale = {Size = Vector3.new(5, 0.2, 5)}
     local tweenScale = game:GetService("TweenService"):Create(jumpPlate, tweenInfo, goalScale)
 
     -- Create tween for fading out
@@ -288,7 +288,7 @@ local function enableAirhop()
                 humanoid:ChangeState(Enum.HumanoidStateType.Physics)
                 humanoid:Move(Vector3.new(0, 10, 0))  -- Apply an upward force to simulate a jump
 
-                -- Create the jump plate at the player's position
+                -- Create the jump plate slightly below the player's position
                 local position = character.PrimaryPart.Position
                 createJumpPlate(position)
             end
